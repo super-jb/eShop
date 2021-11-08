@@ -1,35 +1,44 @@
-﻿using Ardalis.GuardClauses;
-using Catalog.API.Data.Entities;
-using Catalog.API.Repositories;
-using FluentValidation;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FluentValidation;
+using MongoDB.Bson;
+using System;
 
 namespace Catalog.API.Commands
 {
     public class UpdateProductValidator : AbstractValidator<UpdateProductCommand>
     {
-        private readonly IProductRepository _repository;
-
-        public UpdateProductValidator(IProductRepository repository)
+        public UpdateProductValidator()
         {
-            _repository = Guard.Against.Null(repository, nameof(repository));
-
             RuleFor(x => x.Product).NotNull();
 
-            RuleFor(x => x.Id)
-                .MustAsync((entity, value, c) => DoesProductExist(value))
-                .WithMessage("Product Id can't be empty");
+            When(x => x.Product != null, () =>
+            {
+                RuleFor(x => x.Product.Id)
+                    .Must((entity, value, c) => IsIdValid(value))
+                    .WithMessage("Product Id must be valid 24 char hexadecimal");
+
+                RuleFor(x => x.Product.Id)
+                    .Equal(x => x.Id, StringComparer.OrdinalIgnoreCase)
+                    .WithMessage("Request Id and Product Id must match");
+
+                RuleFor(x => x.Product.Price)
+                     .Must((entity, value, c) => IsPriceValid(value))
+                     .WithMessage("Product Price must be > $0");
+            });
         }
 
-        private async Task<bool> DoesProductExist(string id)
+        private bool IsIdValid(string id)
         {
-            if ((await _repository.GetProduct(id.ToString())) != null)
+            if (ObjectId.TryParse(id, out ObjectId o))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
+        }
+
+        private bool IsPriceValid(decimal price)
+        {
+            return price > 0;
         }
     }
 }

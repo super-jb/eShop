@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Catalog.API.Repositories;
 using FluentValidation;
+using MongoDB.Bson;
 using System.Threading.Tasks;
 
 namespace Catalog.API.Commands
@@ -18,8 +19,8 @@ namespace Catalog.API.Commands
             When(x => x.Product != null, () =>
             {
                 RuleFor(x => x.Product.Id)
-                    .Must((entity, value, c) => !IsIdEmpty(value))
-                    .WithMessage("Product Id can't be empty");
+                    .Must((entity, value, c) => IsIdValid(value))
+                    .WithMessage("Product Id must be valid 24 char hexadecimal");
 
                 RuleFor(x => x.Product.Price)
                      .Must((entity, value, c) => IsPriceValid(value))
@@ -31,14 +32,14 @@ namespace Catalog.API.Commands
             });
         }
 
-        private bool IsIdEmpty(string id)
+        private bool IsIdValid(string id)
         {
-            if (!string.IsNullOrEmpty(id))
+            if (ObjectId.TryParse(id, out ObjectId o))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         private bool IsPriceValid(decimal price)
@@ -48,7 +49,7 @@ namespace Catalog.API.Commands
 
         private async Task<bool> IsIdUnique(string id)
         {
-            if ((await _repository.GetProduct(id)) != null)
+            if (await _repository.GetProduct(id) != null)
             {
                 return false;
             }

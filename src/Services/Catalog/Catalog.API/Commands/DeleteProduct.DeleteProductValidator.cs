@@ -14,13 +14,13 @@ namespace Catalog.API.Commands
             _repository = Guard.Against.Null(repository, nameof(repository));
 
             RuleFor(x => x.Id)
-                .MustAsync((entity, value, c) => DoesProductExist(value))
-                .WithMessage("Product Id can't be empty");
+                .MustAsync((entity, value, c) => ProductDoesNotExist(value))
+                .WithMessage("Product doesn't exist");
         }
 
-        private async Task<bool> DoesProductExist(string id)
+        private async Task<bool> ProductDoesNotExist(string id)
         {
-            if ((await _repository.GetProduct(id)) != null)
+            if (await _repository.GetProduct(id) != null)
             {
                 return false;
             }

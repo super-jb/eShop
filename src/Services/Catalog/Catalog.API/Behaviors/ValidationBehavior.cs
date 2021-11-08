@@ -40,12 +40,12 @@ namespace Catalog.API.Behaviors
             ValidationResult result = await _validationHandler.ValidateAsync(request, cancellationToken);
             if (!result.IsValid)
             {
-                var errorMessages = string.Join("; ", result.Errors.Select(x => x.ErrorMessage));
-                _logger.LogWarning($"Validation failed for {requestName}. Errors: {errorMessages}");
+                var errorMessages = result.Errors.Select(x => x.ErrorMessage);
+                _logger.LogWarning($"Validation failed for {requestName}. Errors: {string.Join("; ", errorMessages)}");
                 return new TResponse 
                 { 
                     StatusCode = HttpStatusCode.BadRequest, 
-                    ErrorMessage = errorMessages
+                    ErrorMessages = errorMessages
                 };
             }
 

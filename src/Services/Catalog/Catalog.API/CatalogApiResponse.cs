@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 
 namespace Catalog.API
 {
@@ -6,6 +7,6 @@ namespace Catalog.API
     {
         public HttpStatusCode StatusCode { get; init; } = HttpStatusCode.OK;
 
-        public string ErrorMessage { get; init; }
+        public IEnumerable<string> ErrorMessages { get; init; }
     }
 }

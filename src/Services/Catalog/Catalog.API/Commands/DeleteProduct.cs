@@ -23,7 +23,7 @@ namespace Catalog.API.Commands
 
             return deleted 
                 ? new DeleteProductResponse { Deleted = deleted, StatusCode = HttpStatusCode.NoContent } 
-                : new DeleteProductResponse { StatusCode = HttpStatusCode.InternalServerError, ErrorMessage = "An error occurred deleting this Product" };
+                : new DeleteProductResponse { StatusCode = HttpStatusCode.InternalServerError, ErrorMessages = new List<string> { "An error occurred deleting this Product" } };
         }
     }
 }

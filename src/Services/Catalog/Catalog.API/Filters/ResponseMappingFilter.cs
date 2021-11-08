@@ -13,7 +13,7 @@ namespace Catalog.API.Filters
         {
             if (context.Result is ObjectResult { Value: CatalogApiResponse response } && response.StatusCode != HttpStatusCode.OK)
             {
-                context.Result = new ObjectResult(new { response.ErrorMessage }) 
+                context.Result = new ObjectResult(new { response.ErrorMessages }) 
                 { 
                     StatusCode = (int)response.StatusCode
                 };

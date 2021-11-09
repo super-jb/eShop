@@ -5,10 +5,15 @@ Original repo: https://github.com/mehmetozkaya/AspnetMicroservices
 Training program: https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/
 
 
-# MongoDb for Docker -> Catalog API
+# CLEAN ARCHITECTURE
+https://www.c-sharpcorner.com/article/introduction-to-clean-architecture-and-implementation-with-asp-net-core/
+
+# CATALOG API
+## MongoDb for Docker -> 
 https://hub.docker.com/_/mongo
     docker ps -> list the running containers
     docker ps -a -> show all the running and exited containers
+    -d -> detachment: working in the background
     docker images -> 
     docker –version -> get the currently installed version of docker
     docker pull mongo -> pulls latest mongo container image
@@ -60,3 +65,10 @@ https://hub.docker.com/r/mongoclient/mongoclient/
     docker run -d -p 3000:3000 mongoclient/mongoclient
     
 http://localhost:3000/
+
+
+# BASKET API
+
+## Docker
+docker pull redis
+docker run -d -p 6379:6379 --name aspnetrun-redis redis

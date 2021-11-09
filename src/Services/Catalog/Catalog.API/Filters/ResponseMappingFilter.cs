@@ -11,7 +11,7 @@ namespace Catalog.API.Filters
         /// </summary>
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            if (context.Result is ObjectResult { Value: CatalogApiResponse response } && response.StatusCode != HttpStatusCode.OK)
+            if (context.Result is ObjectResult { Value: JsonApiResponse response } && response.StatusCode != HttpStatusCode.OK)
             {
                 context.Result = new ObjectResult(new { response.ErrorMessages }) 
                 { 

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace Catalog.API.Behaviors
 {
     public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
-        where TResponse : CatalogApiResponse, new()
+        where TResponse : JsonApiResponse, new()
     {
         private readonly ILogger<ValidationBehavior<TRequest, TResponse>> _logger;
         private readonly IValidator<TRequest> _validationHandler;

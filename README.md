@@ -14,10 +14,12 @@ https://hub.docker.com/_/mongo
     docker ps -> list the running containers
     docker ps -a -> show all the running and exited containers
     -d -> detachment: working in the background
+    -p -> port numbers: -p6379:6379
     docker images -> 
     docker –version -> get the currently installed version of docker
     docker pull mongo -> pulls latest mongo container image
     docker run -d -p 27017:27017 --name shopping-mongo mongo
+    
     docker logs -f shopping-mongo
     docker exec -it shopping-mongo /bin/bash
         -> it: interactive terminal
@@ -49,7 +51,6 @@ https://hub.docker.com/_/mongo
             * show collections
             * db.Products.remove({})
 
-
     * install-package mongodb.driver
 
 docker ps
@@ -69,6 +70,19 @@ http://localhost:3000/
 
 # BASKET API
 
-## Docker
-docker pull redis
-docker run -d -p 6379:6379 --name aspnetrun-redis redis
+## Redis for Docker ->
+https://hub.docker.com/_/redis
+    docker pull redis
+    docker run -d -p 6379:6379 --name aspnetrun-redis redis
+    
+    docker logs -f aspnetrun-redis
+    docker exec -it aspnetrun-redis /bin/bash
+        redis-cli
+            ping
+            set key value
+            get key
+            set name john
+            get name
+
+## Portainer
+https://portainer.readthedocs.io/en/stable/deployment.html            

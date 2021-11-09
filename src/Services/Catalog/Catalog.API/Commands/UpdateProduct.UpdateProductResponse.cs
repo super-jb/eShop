@@ -2,7 +2,7 @@
 
 namespace Catalog.API.Commands
 {
-    public record UpdateProductResponse : CatalogApiResponse
+    public record UpdateProductResponse : JsonApiResponse
     {
         public Product Product;
     }

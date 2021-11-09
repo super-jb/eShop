@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Catalog.API
 {
-    public record CatalogApiResponse
+    public record JsonApiResponse
     {
         public HttpStatusCode StatusCode { get; init; } = HttpStatusCode.OK;
 

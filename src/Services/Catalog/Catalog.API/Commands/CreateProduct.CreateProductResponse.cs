@@ -2,7 +2,7 @@
 
 namespace Catalog.API.Commands
 {
-    public record CreateProductResponse : CatalogApiResponse
+    public record CreateProductResponse : JsonApiResponse
     {
         public Product Product { get; set; }
     }

@@ -46,3 +46,17 @@ https://hub.docker.com/_/mongo
 
 
     * install-package mongodb.driver
+
+docker ps
+docker stop [CONTAINER ID]
+docker rm [CONTAINER ID]
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
+
+docker stop $(docker ps -aq)    -> stop all running containers
+docker rm $(docker ps -aq)      -> remove all running containers
+
+https://hub.docker.com/r/mongoclient/mongoclient/
+    docker run -d -p 3000:3000 mongoclient/mongoclient
+    
+http://localhost:3000/

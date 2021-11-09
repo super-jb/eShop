@@ -27,6 +27,18 @@ namespace Catalog.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region MediatR
+
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            // Add validators
+            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
+
+            // Pipeline order is important
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+            #endregion MediatR
+
             services.AddControllers(options => options.Filters.Add(typeof(ResponseMappingFilter)));
 
             services.AddSwaggerGen(c =>
@@ -40,18 +52,6 @@ namespace Catalog.API
             services
                 .AddHealthChecks()
                 .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "MongoDb Health", HealthStatus.Degraded);
-
-            #region MediatR
-
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-
-            // Add validators
-            services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
-
-            // Pipeline order is important
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
-
-            #endregion MediatR
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

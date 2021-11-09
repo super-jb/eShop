@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API.UnitTests", "Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API.IntegrationTests", "Services\Catalog\Catalog.API.IntegrationTests\Catalog.API.IntegrationTests.csproj", "{07DADE6C-FC55-4EA8-A155-E8E03326FF96}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2DE8745E-C36B-44DE-8621-C06827D4FD80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{07DADE6C-FC55-4EA8-A155-E8E03326FF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07DADE6C-FC55-4EA8-A155-E8E03326FF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07DADE6C-FC55-4EA8-A155-E8E03326FF96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE8745E-C36B-44DE-8621-C06827D4FD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE8745E-C36B-44DE-8621-C06827D4FD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE8745E-C36B-44DE-8621-C06827D4FD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE8745E-C36B-44DE-8621-C06827D4FD80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

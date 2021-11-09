@@ -16,6 +16,16 @@ services:
       - "6379:6379"
     # no volume to save data since this is distributed cache
 
+  #portainer:
+  #  container_name: portainer
+  #  restart: always
+  #  ports:
+  #    - "8080:8000"
+  #    - "9443:9443"
+  #  volumes:
+  #    - /var/run/docker.sock:/var/run/docker.sock
+  #    - portainer_data:/data
+
   catalog.api:
     container_name: catalog.api
     environment:

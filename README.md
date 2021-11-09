@@ -85,4 +85,13 @@ https://hub.docker.com/_/redis
             get name
 
 ## Portainer
-https://portainer.readthedocs.io/en/stable/deployment.html            
+https://portainer.readthedocs.io/en/stable/deployment.html
+https://hub.docker.com/r/portainer/portainer-ce            
+
+
+Run these 2 commands since portainer isn't running properly through docker compose command. Commented out Portainer docker setup code:
+* docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+
+* docker run -d -p 8080:8000 -p 9443:9443 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+    https://localhost:9443
+    admin / admin1234

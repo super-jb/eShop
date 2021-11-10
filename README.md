@@ -62,6 +62,18 @@ docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
 docker stop $(docker ps -aq)    -> stop all running containers
 docker rm $(docker ps -aq)      -> remove all running containers
 
+List all containers (only IDs)
+    docker ps -aq
+Stop all running containers
+    docker stop $(docker ps -aq)
+Remove all containers
+    docker rm $(docker ps -aq)
+Remove all images
+    docker rmi $(docker images -q)
+Remove all none images
+    docker system prune
+
+
 https://hub.docker.com/r/mongoclient/mongoclient/
     docker run -d -p 3000:3000 mongoclient/mongoclient
     
@@ -91,7 +103,24 @@ https://hub.docker.com/r/portainer/portainer-ce
 
 Run these 2 commands since portainer isn't running properly through docker compose command. Commented out Portainer docker setup code:
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
-
 * docker run -d -p 8080:8000 -p 9443:9443 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
     https://localhost:9443
     admin / admin1234
+
+
+# DISCOUNT API
+https://hub.docker.com/_/postgres
+https://www.pgadmin.org/
+https://hub.docker.com/r/dpage/pgadmin4
+
+* PgAdmin also doesn't load properly in docker :-/
+
+
+* docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
+* /* docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build */
+
+* docker run -d -p 8080:8000 -p 9443:9443 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+* docker run -d -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com -e PGADMIN_DEFAULT_PASSWORD=admin1234 --name=pgadmin --restart=always --pull=always -v pgadmin_data:/root/.pgadmin dpage/pgadmin4:latest
+
+http://localhost:5050/login?next=%2F

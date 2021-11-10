@@ -15,7 +15,4 @@
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Microservices.Net.postman_collection.json" />
-  </ItemGroup>
 </Project>

@@ -1,6 +1,5 @@
 using Discount.API.Extensions;
 using Discount.API.Repositories;
-using Npgsql;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,11 @@
 using Discount.Grpc.Extensions;
 using Discount.Grpc.Repositories;
 using Discount.Grpc.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
-
+builder.Services.AddAutoMapper(typeof(Program)); 
 builder.Services.AddGrpc();
 
 var app = builder.Build();

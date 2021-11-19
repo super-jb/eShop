@@ -115,10 +115,23 @@ https://hub.docker.com/r/dpage/pgadmin4
 
 * PgAdmin also doesn't load properly in docker :-/
 
+
+
+
+
+
+(when a docker image needs to be rebuilt)
+* docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
+
+
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
 
 * docker run -d -p 8080:8000 -p 9443:9443 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 
 * docker run -d -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=admin@aspnetrun.com -e PGADMIN_DEFAULT_PASSWORD=admin1234 --name=pgadmin --restart=always --pull=always -v pgadmin_data:/root/.pgadmin dpage/pgadmin4:latest
 
-http://localhost:5050/login?next=%2F
+TearDown
+* docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml down
+
+http://localhost:5050/login?next=%2F -> [postegresql]
+http://localhost:9000/ -> [portainer]

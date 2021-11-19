@@ -17,9 +17,6 @@ public static class HostExtensions
         {
             logger.LogInformation("Migrating PostgreSql db");
 
-            // TODO: remove this
-            logger.LogInformation(configuration.GetValue<string>("DatabaseSettings:ConnectionString") ?? "DatabaseSettings:ConnectionString IS NULL");
-            
             using NpgsqlConnection connection = new(configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
             connection.Open();
 

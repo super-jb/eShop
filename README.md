@@ -115,9 +115,7 @@ https://hub.docker.com/r/dpage/pgadmin4
 
 * PgAdmin also doesn't load properly in docker :-/
 
-
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up -d
-* /* docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build */
 
 * docker run -d -p 8080:8000 -p 9443:9443 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 

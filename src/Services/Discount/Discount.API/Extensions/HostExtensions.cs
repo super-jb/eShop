@@ -44,8 +44,6 @@ namespace Discount.API.Extensions
                 command.ExecuteNonQuery();
 
                 logger.LogInformation("Migrated PostgreSql db :)");
-
-                //host.MigrateDatabase<TContext>(retry);
             }
             catch (NpgsqlException ex)
             {

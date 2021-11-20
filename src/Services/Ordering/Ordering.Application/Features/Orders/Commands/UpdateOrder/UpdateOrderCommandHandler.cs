@@ -25,7 +25,7 @@ public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand>
         var orderToUpdate = await _orderRepository.GetByIdAsync(request.Id);
         if (orderToUpdate == null)
         {
-            throw new Exceptions.NotFoundException(nameof(Order), request.Id));
+            throw new Exceptions.NotFoundException(nameof(Order), request.Id);
         }
 
         _mapper.Map(request, orderToUpdate, typeof(UpdateOrderCommand), typeof(Order));

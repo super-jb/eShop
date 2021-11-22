@@ -21,7 +21,7 @@ public class OrderContextSeed
         {
             new Order
             {
-                UserName = "swn",
+                UserName = "jb",
                 FirstName = "John",
                 LastName = "B",
                 EmailAddress = "john.acb@gmail.com",

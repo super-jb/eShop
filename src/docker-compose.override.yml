@@ -36,7 +36,16 @@ services:
     restart: always
     ports:
       - "1433:1433"
-    network_mode: "host" # workaround to get docker to run SQL locally
+#    network_mode: "host" # workaround to get docker to run SQL locally
+
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+        - "5672:5672"
+        - "15672:15672"
+    # username: guest
+    # password: guest
 
   #pgadmin:
   #  container_name: pgadmin

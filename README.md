@@ -116,7 +116,14 @@ https://hub.docker.com/r/dpage/pgadmin4
 * PgAdmin also doesn't load properly in docker :-/
 
 
+# RABBIT MQ
+https://hub.docker.com/_/rabbitmq
+docker pull rabbitmq
 
+> Basket.API
+Install-Package MassTransit
+Install-Package MassTransit.RabbitMQ
+Install-Package MassTransit.AspNetCore
 
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build

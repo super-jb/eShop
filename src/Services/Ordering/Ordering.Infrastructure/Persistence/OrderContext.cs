@@ -22,7 +22,9 @@ public class OrderContext : DbContext
             {
                 case EntityState.Added:
                     entry.Entity.CreatedDate = DateTime.Now;
+                    entry.Entity.LastModifiedDate = DateTime.Now;
                     entry.Entity.CreatedBy = "jb";
+                    entry.Entity.LastModifiedBy = "jb";
                     break;
                 case EntityState.Modified:
                     entry.Entity.LastModifiedDate = DateTime.Now;

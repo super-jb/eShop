@@ -26,8 +26,15 @@ public class OrderContextSeed
                 LastName = "B",
                 EmailAddress = "john.acb@gmail.com",
                 AddressLine = "My Street 123, SF CA",
+                State = "CA",
+                ZipCode = "94117",
                 Country = "USA",
-                TotalPrice = 350
+                TotalPrice = 350,
+                CardName = "JB",
+                CardNumber = "1234567890123456",
+                Expiration = "12/28",
+                CVV = "123",
+                PaymentMethod = 1
             }
         };
     }

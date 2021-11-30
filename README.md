@@ -118,8 +118,6 @@ https://hub.docker.com/r/dpage/pgadmin4
 
 
 
-
-
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
 
@@ -135,3 +133,25 @@ TearDown
 
 http://localhost:5050/login?next=%2F -> [postegresql]
 http://localhost:9000/ -> [portainer]
+
+
+Stop all running containers
+    docker stop $(docker ps -aq)
+Remove all containers
+    docker rm $(docker ps -aq)
+Remove all images
+    docker rmi $(docker images -q)
+Remove all none images
+    docker system prune
+
+
+> docker network ls
+NETWORK ID     NAME          DRIVER    SCOPE
+d7ed2b9114e4   bridge        bridge    local
+0dc88cdaf1c5   host          host      local
+7bbfc478d7f7   none          null      local
+dd3a5a39e79b   src_default   bridge    local
+> docker network inspect bridge
+> docker network inspect host
+> docker network inspect src_default
+> docker network inspect none

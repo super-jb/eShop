@@ -14,8 +14,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddGrpc();
 
 var app = builder.Build();
-
-app.MigrateDatabase<Program>(); // create DB, Table & populate tb
+app.MigrateDatabase<Program>(); // create DB, Table & populate tbl
 
 // Configure the HTTP request pipeline.
 app.MapGrpcService<DiscountService>();

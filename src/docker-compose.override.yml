@@ -31,12 +31,11 @@ services:
   orderdb:
     container_name: orderdb
     environment:
-      SA_PASSWORD: "P@$$word@1234"
+      SA_PASSWORD: "P@SSw0rd!1234"
       ACCEPT_EULA: "Y"
     restart: always
     ports:
       - "1433:1433"
-#    network_mode: "host" # workaround to get docker to run SQL locally
 
   rabbitmq:
     container_name: rabbitmq

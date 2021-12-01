@@ -125,6 +125,14 @@ Install-Package MassTransit
 Install-Package MassTransit.RabbitMQ
 Install-Package MassTransit.AspNetCore
 
+
+# OCELOT
+https://ocelot.readthedocs.io/en/latest/introduction/gettingstarted.html#net-core-3-1
+
+http://localhost:8000/api/v1/Catalog -> http://localhost:5010/Catalog
+http://localhost:8000/api/v1/Catalog/6188aef4b344945ebf046e35 -> http://localhost:5010/Catalog/6188aef4b344945ebf046e35
+
+
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
 

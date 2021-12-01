@@ -14,8 +14,12 @@ public static class InfrastructureServiceRegistration
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<OrderContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("OrderingConnectionString")));
+        var connectionString =
+            Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true"
+            ? configuration.GetConnectionString("OrderingConnectionStringDocker")
+            : configuration.GetConnectionString("OrderingConnectionString");
+
+        services.AddDbContext<OrderContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
         services.AddScoped<IOrderRepository, OrderRepository>();

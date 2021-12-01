@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Polly;
+using Polly.Retry;
 
 namespace Ordering.API.Extensions;
 
@@ -19,7 +20,8 @@ public static class HostExtensions
         {
             logger.LogInformation("Migrating database associated with context {DbContextName}", typeof(TContext).Name);
 
-            var retry = Policy.Handle<SqlException>()
+            RetryPolicy retry = 
+                Policy.Handle<SqlException>()
                     .WaitAndRetry(
                         retryCount: 3,
                         sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)), // 2,4,8,16,32 sc

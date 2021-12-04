@@ -1,26 +1,25 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Catalog.API.Data.Entities
+namespace Catalog.API.Data.Entities;
+
+[BsonDiscriminator("Product")]
+public class Product
 {
-    [BsonDiscriminator("Product")]
-    public class Product
-    {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
 
-        [BsonElement("Name")] // if you wanted a different column name in th DB
-        public string Name { get; set; }
+    [BsonElement("Name")] // if you wanted a different column name in th DB
+    public string Name { get; set; }
 
-        public string Category { get; set; }
+    public string Category { get; set; }
         
-        public string Summary { get; set; }
+    public string Summary { get; set; }
         
-        public string Description { get; set; }
+    public string Description { get; set; }
         
-        public string ImageFile { get; set; }
+    public string ImageFile { get; set; }
         
-        public decimal Price { get; set; }
-    }
+    public decimal Price { get; set; }
 }

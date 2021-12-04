@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 
-namespace Catalog.API
-{
-    public record JsonApiResponse
-    {
-        public HttpStatusCode StatusCode { get; init; } = HttpStatusCode.OK;
+namespace Catalog.API;
 
-        public IEnumerable<string> ErrorMessages { get; init; }
-    }
+public record JsonApiResponse
+{
+    public HttpStatusCode StatusCode { get; init; } = HttpStatusCode.OK;
+
+    public IEnumerable<string> ErrorMessages { get; init; }
 }

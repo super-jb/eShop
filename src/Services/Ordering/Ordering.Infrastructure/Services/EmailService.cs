@@ -6,6 +6,7 @@ using SendGrid;
 using SendGrid.Helpers.Mail;
 
 namespace Ordering.Infrastructure.Services;
+
 public class EmailService : IEmailService
 {
     private readonly EmailSettings _emailSettings;

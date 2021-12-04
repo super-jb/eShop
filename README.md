@@ -138,6 +138,27 @@ https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=asp
 https://stackoverflow.com/questions/40027299/where-is-the-postasjsonasync-method-in-asp-net-core
 
 
+# IdentityServer4
+* https://medium.com/aspnetrun/securing-microservices-with-identityserver4-with-oauth2-and-openid-connect-fronted-by-ocelot-api-49ea44a0cf9e
+* https://github.com/aspnetrun/run-aspnet-identityserver4/
+* https://github.com/mansoorafzal/SecureMicroservices/tree/main/src
+* https://www.udemy.com/course/secure-net-microservices-with-identityserver4-oauth2openid/?couponCode=DECEMBER2021
+
+POSTMAN REQUEST:
+    POST    https://localhost:5010/connect/token
+    x-www-form-urlencoded
+    grant_type = client_credentials
+    scope = shoppingApi
+    client_id = shoppingClient
+    client_secret = secret
+RESPONSE:
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkIyMUMyMjlBOTI5MDhGQTdDRUQ0MURBMzQ3NjFFRTdDIiwidHlwIjoiYXQrand0In0.eyJuYmYiOjE2Mzg2MDE0MDIsImV4cCI6MTYzODYwNTAwMiwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NTAxMCIsImNsaWVudF9pZCI6InNob3BwaW5nQ2xpZW50IiwianRpIjoiMjA3MDExODAzRDUwQjE1RDExQzZBQ0ExQ0JCODc4QkYiLCJpYXQiOjE2Mzg2MDE0MDIsInNjb3BlIjpbInNob3BwaW5nQXBpIl19.CXR9Ji9OYsjpDnotr6yz3aNea-EFlWmrDrg-KHFV0-XLl-BwrNcfTW3jz38-rHZpmxOvgqPXNSrzxmY__dxepqkaqjFU5USNvz8nRI8wUcHvfXwU5Bt6H5o8f1YJklgSswLkFDB3UqivYAE09ME7RLZLlM9zCzKzMJeIliUWhQXCbsuu6-BdQdxtoV8TaX10OggbC_s63cehmxIJINuZX87EfpAxhYNJqiCchsKRqWM2lV29h48xMAaXC9oSEiBEqMvm_JoQECUy2KvjTTPcX8u7kfR-SaQPosLzRcptGEyFB_dXwWqyNXSA_WJVMfs5PCpgwgPG4i2QH7vykohLPA",
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "scope": "shoppingApi"
+}
+
 
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build

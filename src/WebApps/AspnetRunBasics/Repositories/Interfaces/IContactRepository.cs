@@ -1,11 +1,11 @@
 ﻿using AspnetRunBasics.Entities;
 using System.Threading.Tasks;
 
-namespace AspnetRunBasics.Repositories
+namespace AspnetRunBasics.Repositories;
+
+public interface IContactRepository
 {
-    public interface IContactRepository
-    {
-        Task<Contact> SendMessage(Contact contact);
-        Task<Contact> Subscribe(string address);
-    }
+    Task<Contact> SendMessage(Contact contact);
+
+    Task<Contact> Subscribe(string address);
 }

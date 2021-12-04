@@ -1,25 +1,26 @@
 ﻿using System.Collections.Generic;
 
-namespace AspnetRunBasics.Entities
+namespace AspnetRunBasics.Entities;
+
+public class Cart
 {
-    public class Cart
+    public int Id { get; set; }
+
+    public string UserName { get; set; }
+
+    public List<CartItem> Items { get; set; } = new List<CartItem>();
+
+    public decimal TotalPrice
     {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
-
-        public decimal TotalPrice
+        get
         {
-            get
+            decimal totalprice = 0;
+            foreach (CartItem item in Items)
             {
-                decimal totalprice = 0;
-                foreach (var item in Items)
-                {
-                    totalprice += item.Price * item.Quantity;
-                }
-
-                return totalprice;
+                totalprice += item.Price * item.Quantity;
             }
+
+            return totalprice;
         }
     }
 }

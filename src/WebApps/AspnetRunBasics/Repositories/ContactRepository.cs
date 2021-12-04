@@ -1,38 +1,39 @@
-﻿using AspnetRunBasics.Data;
+﻿using Ardalis.GuardClauses;
+using AspnetRunBasics.Data;
 using AspnetRunBasics.Entities;
-using System;
 using System.Threading.Tasks;
 
-namespace AspnetRunBasics.Repositories
+namespace AspnetRunBasics.Repositories;
+
+public class ContactRepository : IContactRepository
 {
-    public class ContactRepository : IContactRepository
+    protected readonly AspnetRunContext _dbContext;
+
+    public ContactRepository(AspnetRunContext dbContext)
     {
-        protected readonly AspnetRunContext _dbContext;
+        _dbContext = Guard.Against.Null(dbContext, nameof(dbContext));
+    }
 
-        public ContactRepository(AspnetRunContext dbContext)
+    public async Task<Contact> SendMessage(Contact contact)
+    {
+        _dbContext.Contacts.Add(contact);
+        await _dbContext.SaveChangesAsync();
+        return contact;
+    }
+
+    public async Task<Contact> Subscribe(string address)
+    {
+        // implement your business logic
+        Contact newContact = new()
         {
-            _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-        }
+            Email = address,
+            Message = address,
+            Name = address
+        };
 
-        public async Task<Contact> SendMessage(Contact contact)
-        {
-            _dbContext.Contacts.Add(contact);
-            await _dbContext.SaveChangesAsync();
-            return contact;
-        }
+        _dbContext.Contacts.Add(newContact);
+        await _dbContext.SaveChangesAsync();
 
-        public async Task<Contact> Subscribe(string address)
-        {
-            // implement your business logic
-            var newContact = new Contact();
-            newContact.Email = address;
-            newContact.Message = address;
-            newContact.Name = address;
-
-            _dbContext.Contacts.Add(newContact);
-            await _dbContext.SaveChangesAsync();
-
-            return newContact;
-        }
+        return newContact;
     }
 }

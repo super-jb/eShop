@@ -133,6 +133,12 @@ http://localhost:8000/api/v1/Catalog -> http://localhost:5010/Catalog
 http://localhost:8000/api/v1/Catalog/6188aef4b344945ebf046e35 -> http://localhost:5010/Catalog/6188aef4b344945ebf046e35
 
 
+# API Gateway Aggregator
+https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-6.0
+https://stackoverflow.com/questions/40027299/where-is-the-postasjsonasync-method-in-asp-net-core
+
+
+
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
 

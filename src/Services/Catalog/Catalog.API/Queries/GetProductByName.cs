@@ -6,22 +6,21 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Catalog.API.Queries
+namespace Catalog.API.Queries;
+
+public class GetProductByName : IRequestHandler<GetProductByNameQuery, GetProductByNameResponse>
 {
-    public class GetProductByName : IRequestHandler<GetProductByNameQuery, GetProductByNameResponse>
+    private readonly IProductRepository _repository;
+
+    public GetProductByName(IProductRepository repository)
     {
-        private readonly IProductRepository _repository;
+        _repository = Guard.Against.Null(repository, nameof(repository));
+    }
 
-        public GetProductByName(IProductRepository repository)
-        {
-            _repository = Guard.Against.Null(repository, nameof(repository));
-        }
+    public async Task<GetProductByNameResponse> Handle(GetProductByNameQuery request, CancellationToken cancellationToken)
+    {
+        IEnumerable<Product> products = await _repository.GetProductByName(request.Name);
 
-        public async Task<GetProductByNameResponse> Handle(GetProductByNameQuery request, CancellationToken cancellationToken)
-        {
-            IEnumerable<Product> products = await _repository.GetProductByName(request.Name);
-
-            return new GetProductByNameResponse { Products = products };
-        }
+        return new GetProductByNameResponse { Products = products };
     }
 }

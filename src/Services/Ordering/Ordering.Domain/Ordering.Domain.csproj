@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,11 +7,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;CS8618;CS8604;CS8765</NoWarn>
+    <NoWarn>1701;1702;CS8600;CS8631;CS8620;CS8604;CA1848;CS8618;CS8603;CS8765;CS8767;CS8714;CS8602;CS8625</NoWarn>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;CS8618;CS8604;CS8765</NoWarn>
+    <NoWarn>1701;1702;CS8600;CS8631;CS8620;CS8604;CA1848;CS8618;CS8603;CS8765;CS8767;CS8714;CS8602;CS8625</NoWarn>
   </PropertyGroup>
 
 </Project>

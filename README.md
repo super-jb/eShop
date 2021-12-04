@@ -165,6 +165,11 @@ Remove all images
 Remove all none images
     docker system prune
 
+# Docker, stop a specific container
+> docker ps
+Name
+dd44a5f6ddca
+> docker container stop dd44a5f6ddca
 
 > docker network ls
 NETWORK ID     NAME          DRIVER    SCOPE

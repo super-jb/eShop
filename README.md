@@ -160,6 +160,7 @@ RESPONSE:
 }
 
 
+
 (when a docker image needs to be rebuilt)
 * docker-compose -f .\docker-compose.yml -f .\docker-compose.override.yml up --build
 
@@ -202,3 +203,21 @@ dd3a5a39e79b   src_default   bridge    local
 > docker network inspect host
 > docker network inspect src_default
 > docker network inspect none
+
+
+You can launch microservices as below urls:
+    Catalog API -> http://host.docker.internal:8000/swagger/index.html
+    Basket API -> http://host.docker.internal:8001/swagger/index.html
+    Discount API -> http://host.docker.internal:8002/swagger/index.html
+    Ordering API -> http://host.docker.internal:8004/swagger/index.html
+    Shopping.Aggregator -> http://host.docker.internal:8005/swagger/index.html
+    API Gateway -> http://host.docker.internal:8010/Catalog
+    Rabbit Management Dashboard -> http://host.docker.internal:15672 -- guest/guest
+    Portainer -> http://host.docker.internal:9000 -- admin/admin1234 pgAdmin 
+    PostgreSQL -> http://host.docker.internal:5050 -- admin@aspnetrun.com/admin1234
+    Elasticsearch -> http://host.docker.internal:9200 -- To Be Develop
+    Kibana -> http://host.docker.internal:5601 -- To Be Develop
+    Web Status -> http://host.docker.internal:8007 -- To Be Develop
+    Web UI -> http://host.docker.internal:8006
+    Launch http://host.docker.internal:8007 in your browser to view the Web Status. Make sure that every microservices are healthy
+    Launch http://host.docker.internal:8006 in your browser to view the WebUI. You can use Web project in order to call microservices over API Gateway. When you checkout the basket you can follow queue record on RabbitMQ dashboard
